@@ -9,7 +9,7 @@ NeetCode. (2021, 14 noviembre). Knuth–Morris–Pratt KMP - Implement strStr() 
 m00nlight. (2016). Python KMP algorithm. GitHub Gist. Retrieved from: https://gist.github.com/m00nlight/daa6786cc503fde12a77
 """
 
-def get_lps(p:str):
+def get_lps(p:str): # Cosntrucción de la LPS.
     m:int = len(p)
     lps = [0] * m
     index_behind, i = 0, 1
@@ -28,11 +28,11 @@ def get_lps(p:str):
 def knuth_morris_pratt(t:str, p:str):
     m:int = len(p)
     n:int = len(t)
-    lps:list = get_lps(p)
+    lps:list = get_lps(p) # Obtiene la LPS correspondiente al patrón.
     i:int = 0
     j:int = 0
     a:list = []
-    while i < n:
+    while i < n: # Saltos entre los índices según la LPS.
         if t[i] == p[j]:
             i, j = i + 1, j + 1
         if j == m :
