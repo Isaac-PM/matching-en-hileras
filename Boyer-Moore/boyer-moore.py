@@ -1,7 +1,7 @@
 """
-Autor / Author : Isaac Fabián Palma Medina @ isaac.palma.medina@est.una.ac.cr
-
-Tipo  / Type   : Elaboración propia
+Title  : Own interpretation of the Boyer-Moore string matching algorithm
+Author : Isaac Fabián Palma Medina @ isaac.palma.medina@est.una.ac.cr
+Type   : Own authorship
 """
 
 def get_value(length:int, index:int):
