@@ -8,7 +8,7 @@ Agrawal, M. (2020a). Search Algorithm [Software]. Retrieved from: https://www.yo
 garg10may. (2018). Find Algorithm [Software]. Retrieved from: https://stackoverflow.com/questions/41199057/naive-string-search-algorithm-python
 """
 
-def sm_naive(t:str, p:str):
+def naive(t:str, p:str):
     m:int = len(p)
     n:int = len(t)
     a:list = []
@@ -22,7 +22,7 @@ def sm_naive(t:str, p:str):
             a.append((i, i + m - 1))
     return a       
 
-print(sm_naive("AGCATGCTGCAGTCATGCTTAGGCTA", "GCT"))
+print(naive("AGCATGCTGCAGTCATGCTTAGGCTA", "GCT"))
 
 """
 Output
