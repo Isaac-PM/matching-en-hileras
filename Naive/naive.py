@@ -12,10 +12,10 @@ def sm_naive(t:str, p:str):
     m:int = len(p)
     n:int = len(t)
     a:list = []
-    for i in range(n - m + 1) :
+    for i in range(n - m + 1):
         flag:bool = True
         for j in range(m) :
-            if t[i + j] != p[j] :
+            if t[i + j] != p[j]:
                 flag = False
                 break
         if j == m - 1 and flag:
