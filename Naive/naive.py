@@ -14,7 +14,7 @@ def naive(t:str, p:str):
     a:list = []
     for i in range(n - m + 1):
         flag:bool = True
-        for j in range(m) :
+        for j in range(m):
             if t[i + j] != p[j]:
                 flag = False
                 break

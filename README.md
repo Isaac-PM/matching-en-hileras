@@ -1,10 +1,10 @@
-# Sobre *matching* en hileras / About string matching
+# Sobre *matching* en hileras / String matching research
 
 ## Estudiante / Student
 
 Isaac Fabián Palma Medina @ isaac.palma.medina@est.una.ac.cr
 
-## Universidad / College
+## Universidad / University
 
 Universidad Nacional de Costa Rica (Escuela de Infórmatica) @ https://www.escinf.una.ac.cr/
 
