@@ -1,7 +1,7 @@
 """
 Title  : Own interpretation of the Boyer-Moore string matching algorithm
 Author : Isaac Fabián Palma Medina @ isaac.palma.medina@est.una.ac.cr
-Type   : Own authorship
+Type   : Own interpretation
 
 Source authors:
 Deshmukh, N. (2021, March 29). Boyer moore algorithm for pattern searching - Kalkicode. Recuperado de https://kalkicode.com/boyer-moore-algorithm-pattern-searching

@@ -1,7 +1,7 @@
 """
 Title  : Own interpretation of the Boyer-Moore string matching algorithm & INSTRUMENTED
 Author : Isaac Fabián Palma Medina @ isaac.palma.medina@est.una.ac.cr
-Type   : Own authorship & INSTRUMENTED
+Type   : Own interpretation & INSTRUMENTED
 """
 import random
 import sys
