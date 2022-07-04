@@ -2,62 +2,38 @@
 Title  : Own interpretation of the Boyer-Moore string matching algorithm
 Author : Isaac Fabián Palma Medina @ isaac.palma.medina@est.una.ac.cr
 Type   : Own authorship
+
+Source authors:
+Deshmukh, N. (2021, March 29). Boyer moore algorithm for pattern searching - Kalkicode. Recuperado de https://kalkicode.com/boyer-moore-algorithm-pattern-searching
+Langmead, B. (2015, May 19). ADS1: Practical: Implementing Boyer-Moore. Youtube. Recuperado de https://www.youtube.com/watch?v=CT1lQN73UMs
 """
 
-def get_value(length:int, index:int):
-    return length - index - 1
-
-def generate_bad_match_table(pattern:str): # Construcción de la Bad Match Table.
-        if " " in pattern : return -1
-        bmt:list = []
-        for i in range(len(pattern) - 1):
-            if not pattern[i] in bmt :
-                bmt.append(pattern[i])
-                bmt.append(get_value(len(pattern), i))
-            else :
-                bmt[bmt.index(pattern[i]) + 1] = get_value(len(pattern), i)
-        bmt.extend([pattern[len(pattern) - 1], len(pattern), " ", len(pattern)])
-        it = iter(bmt)
-        pattern = dict(zip(it, it))
-        return pattern
-
 def boyer_moore(t:str, p:str):
-    if len(t) < len(p): # Verificación inicial.
-        return -1
-    bmt:dict = generate_bad_match_table(p) # Obtiene la BMT correspondiente al patrón.
-    
-    coincidence_list:list = []
-    aux_list:list = []
-    p_length:int = len(p)
-    current_index:int = p_length
-    carriage:int = p_length
-    finished:bool = False
-    
-    while not finished:
-        if carriage + p_length > len(t): # Verifica si es posible "encajar" p en lo que resta de t.
-            finished = True   
-        if current_index == p_length:
-            coincidence_list = [] 
-        if t[carriage] != p[current_index - 1]: # Movimiento inicial de la "ventana" o "carro".
-            if not t[carriage] in p:
-                carriage += bmt.get(" ")
+    m:int = len(p)
+    n:int = len(t)
+    a:list = []
+    bad_char:str = [-1] * (256) 
+    # Se inicializa según la cantidad posbile de caracteres, en este caso 256 según ASCII.
+    for i in range(m):
+        bad_char[ord(p[i])] = i
+        # En la lista de caracteres, para cada elemento del patrón, guarda su valor posicional en este (primera ocurrencia).
+    j:int = m - 1
+    c:int = 0
+    while c <= (n - m): # Tomando en cuenta los largos de t y p.
+        while j >= 0 and p[j] == t[c + j]:
+            j -= 1
+        if j < 0:
+            a.append((c, c + m - 1)) # En caso de coincidencia lo guarda.
+            if c + m < n:
+                c += m - bad_char[ord(t[c + m])]
             else:
-                carriage += bmt.get(t[carriage])
-            current_index = len(p)
+                c += 1
         else:
-            coincidence_list.append(carriage) # Añade donde existe una coincidencia de el carácter.
-            if len(coincidence_list) == p_length:
-                aux_list.append((coincidence_list[len(coincidence_list) - 1], coincidence_list[0]))
-                coincidence_list = []
-                carriage += p_length
-                current_index = p_length
-            else:
-                carriage -= 1
-                current_index -= 1
-    return aux_list
+            c += max(1, j - bad_char[ord(t[c + j])])
+        j = m - 1
+    return a
 
 print(boyer_moore("trusthardtoothbrushestoothbrushes", "tooth"))
-
 print(boyer_moore("iscreamyouscreamweallscreamforicecream", "scream"))
 
 """
